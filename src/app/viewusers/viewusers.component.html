@@ -1,0 +1,55 @@
+<div class="container">
+  <h1>Welcome {{ currentUser }}</h1>
+
+  <div *ngIf="currentUser === 'swiga'; else notSwiga">
+    <div class="table-container">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Password</th>
+            <th>Admin</th>
+            <th>Delete</th>
+            <th>Edit</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of allusers">
+            <td>{{ user.name }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.password }}</td>
+            <td>{{ user.is_admin ? 'Yes' : 'No' }}</td>
+            <td>
+              <button class="delete-button" (click)="removeUser(user.id)">Delete</button>
+            </td>
+            <td>
+              <button class="edit-button" (click)="editUser(user.id)">Edit</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <ng-template #notSwiga>
+    <div class="table-container">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Admin</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of allusers">
+            <td>{{ user.name }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.is_admin ? 'Yes' : 'No' }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </ng-template>
+</div>

@@ -1,0 +1,136 @@
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+.profile-card {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
+
+.profile-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+}
+
+.profile-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.profile-avatar-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 20px;
+}
+
+.profile-avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  object-fit: cover;
+}
+
+.profile-avatar:hover {
+  transform: scale(1.05);
+  opacity: 0.9;
+}
+
+.profile-details h2 {
+  margin: 0;
+  font-size: 26px;
+  color: #4CAF50;
+}
+
+.profile-details p {
+  margin: 5px 0;
+  color: #555;
+}
+
+.unit-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.unit-card {
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #f7f7f7;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+.unit-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
+  background-color: #eaeaea;
+}
+
+.location-details h2,
+.amenities h2 {
+  margin-top: 0;
+  color: #4CAF50;
+}
+
+.unit-image-wrapper {
+  text-align: center;
+  margin-top: 15px;
+}
+
+.unit-image {
+  max-width: 100%;
+  border-radius: 10px;
+  transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+.unit-image:hover {
+  transform: scale(1.05);
+  opacity: 0.9;
+}
+
+.edit-button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  font-weight: bold;
+}
+
+.edit-button:hover {
+  background-color: #388E3C;
+  transform: scale(1.05);
+}
+
+.edit-button:active {
+  transform: scale(0.95);
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid #ddd;
+  margin: 20px 0;
+}
+
+.loading-message {
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+  color: #555;
+}

@@ -1,0 +1,79 @@
+<div class="container">
+  <h1>City Homes</h1>
+
+  <div class="registration-form-container">
+    <form [formGroup]="registration_form" (ngSubmit)="onSubmit()" class="registration-form">
+      <div class="form-group">
+        <input type="text" formControlName="name" name="name" id="name" class="form-control">
+        <label for="name" class="form-label">Name</label>
+        <div *ngIf="registration_form.get('name')?.invalid && (registration_form.get('name')?.dirty || registration_form.get('name')?.touched)">
+          <p class="error-message">Please provide a valid name value!</p>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <input type="email" formControlName="email" name="email" id="email" class="form-control">
+        <label for="email" class="form-label">Email</label>
+        <div *ngIf="registration_form.get('email')?.invalid && (registration_form.get('email')?.dirty || registration_form.get('email')?.touched)">
+          <p class="error-message">Please provide a valid email!</p>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <input [type]="showPassword ? 'text' : 'password'" formControlName="password" name="password" id="password" class="form-control">
+        <label for="password" class="form-label">Password</label>
+        <div *ngIf="registration_form.get('password')?.invalid && (registration_form.get('password')?.dirty || registration_form.get('password')?.touched)">
+          <p class="error-message">Please provide a valid password!</p>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <input type="text" formControlName="phone_number" name="phone_number" id="phone_number" class="form-control">
+        <label for="phone_number" class="form-label">Phone Number</label>
+        <div *ngIf="registration_form.get('phone_number')?.invalid && (registration_form.get('phone_number')?.dirty || registration_form.get('phone_number')?.touched)">
+          <p class="error-message">Please provide a valid phone number!</p>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <textarea formControlName="generalPropertyOverview" name="generalPropertyOverview" id="generalPropertyOverview" class="form-control"></textarea>
+        <label for="generalPropertyOverview" class="form-label">General Property Overview</label>
+        <div *ngIf="registration_form.get('generalPropertyOverview')?.invalid && (registration_form.get('generalPropertyOverview')?.dirty || registration_form.get('generalPropertyOverview')?.touched)">
+          <p class="error-message">Please provide a general property overview!</p>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <textarea formControlName="description" name="description" id="description" class="form-control"></textarea>
+        <label for="description" class="form-label">Description</label>
+        <div *ngIf="registration_form.get('description')?.invalid && (registration_form.get('description')?.dirty || registration_form.get('description')?.touched)">
+          <p class="error-message">Please provide a description!</p>
+        </div>
+      </div>
+
+      <!-- Profile Photo Upload -->
+      <div class="form-group">
+        <input type="file" (change)="onFileSelected($event)" name="profile_photo" id="profile_photo" class="form-control">
+        <label for="profile_photo" class="form-label">Profile Photo</label>
+      </div>
+
+      <div class="form-group-checkbox">
+        <input type="checkbox" id="show-password" (change)="togglePasswordVisibility()">
+        <label for="show-password" class="form-label-checkbox">Show Password</label>
+      </div>
+
+      <!-- Updated is_admin field as a dropdown -->
+      <div class="form-group">
+        <label for="is_admin" class="form-label">Admin?</label>
+        <select formControlName="is_admin" id="is_admin" class="form-control-dropdown">
+          <option value="false">No</option>
+          <option value="true">Yes</option>
+        </select>
+      </div>
+
+      <button type="submit" [disabled]="registration_form.invalid" class="submit-button">
+        Register User
+      </button>
+    </form>
+  </div>
+</div>

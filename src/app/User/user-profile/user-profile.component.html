@@ -1,0 +1,63 @@
+<div *ngIf="loading" class="loading-message">Loading...</div>
+<div *ngIf="!loading" class="profile-card">
+  <div class="profile-header">
+    <!-- <div class="profile-avatar-wrapper">
+      <img [src]="profilePicture" alt="Profile Photo" class="profile-avatar">
+    </div> -->
+    
+    <div class="profile-details">
+      <h2>{{userData.name}}</h2>
+      <p><b>Email:</b> {{userData.email}}</p>
+      <p><b>Phone:</b> {{userData.phone_number}}</p>
+      <p><b>Description:</b> {{userData.description}}</p>
+      <p><b>General Overview:</b> {{userData.general_property_overview}}</p>
+      <p><b>Member Since:</b> {{userData.created_at | date:'MMMM d, y, h:mm a'}}</p>
+    </div>
+  </div>
+
+  <div class="unit-list">
+    <div *ngFor="let unitData of unitsData" class="unit-card">
+      <div *ngIf="unitData.images.length > 0" class="unit-image-wrapper">
+        <h2>Images</h2>
+        <div *ngFor="let image of unitData.images">
+          <img [src]="image.image" alt="Unit Image" class="unit-image">
+        </div>
+      </div>
+      <h2>Unit Details</h2>
+      <p><b>Title:</b> {{unitData.unit.title}}</p>
+      <p><b>User that Uploaded:</b> {{unitData.unit.userThatUploaded}}</p>
+      <p><b>Subtitle:</b> {{unitData.unit.subtitle}}</p>
+      <p><b>Category:</b> {{unitData.unit.category}}</p>
+      <p><b>Accommodation Info:</b> {{unitData.unit.accomodation_information}}</p>
+      <p><b>Number of Bedrooms:</b> {{unitData.unit.number_of_bedrooms}}</p>
+      <p><b>Number of Bathrooms:</b> {{unitData.unit.number_of_bathrooms}}</p>
+      <p><b>Price Information:</b> {{unitData.unit.price_information}}</p>
+      <p><b>Created At:</b> {{formatDate(unitData.unit.created_at)}}</p>
+      <p><b>Updated At:</b> {{formatDate(unitData.unit.updated_at)}}</p>
+      <p><b>Booked:</b> {{unitData.unit.is_booked ? 'Yes' : 'No'}}</p>
+      <hr>
+
+      <div class="location-details" *ngIf="unitData.location">
+        <h2>Location Details</h2>
+        <p><b>City:</b> {{unitData.location.city}}</p>
+        <p><b>State:</b> {{unitData.location.state}}</p>
+        <p><b>Country:</b> {{unitData.location.country}}</p>
+        <hr>
+      </div>
+
+      
+      <hr>
+      
+      <div class="amenities" *ngIf="unitData.amenities">
+        <h2>Amenities</h2>
+        <p>{{unitData.amenities.amenities}}</p>
+      </div>
+      
+      <div>
+        <button [routerLink]="['/edit-unit', unitData.unit.id]" class="edit-button">
+          Edit Unit
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

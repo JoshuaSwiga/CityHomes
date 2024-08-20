@@ -1,0 +1,25 @@
+<br><br><br><br>
+<p>{{message}}</p>
+
+<div class="message-container">
+    <p class="warm-message">
+        At our company, we take immense pride in offering the best locations tailored to meet diverse needs and preferences. Each of our locations is meticulously selected to ensure unparalleled convenience, breathtaking views, and an ambiance that guarantees comfort and luxury. Whether you seek the tranquility of a serene countryside, the vibrant energy of a bustling city center, or the scenic beauty of coastal havens, our portfolio of locations has something special for everyone. Our commitment to excellence means that every location is equipped with top-notch amenities, easy access to essential services, and a welcoming environment that makes you feel at home. Trust us to provide you with locations that not only meet your expectations but exceed them, ensuring an unforgettable experience every time.
+    </p>
+</div>
+
+<div class="location-list-wrapper">
+    <div class="location-list">
+        <p class="loading-message">{{message}}</p>
+        <div *ngFor="let data of locations" class="location-card">
+            <div class="location-info">
+                <p class="location-city">{{ data.city }}</p>
+                <p class="location-state">{{ data.state }}</p>
+                <p class="location-country">{{ data.country }}</p>
+            </div>
+            <div class="location-actions">
+                <button class="btn edit-btn" (click)="editLocation(data.id)">Edit</button>
+                <button class="btn delete-btn" (click)="deleteLocation(data.id)">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>

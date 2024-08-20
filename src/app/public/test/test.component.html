@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accessibility Widget</title>
+    <style>
+        body {
+            font-size: 16px;
+        }
+
+        .high-contrast {
+            background-color: black;
+            color: white;
+        }
+
+        #accessibility-options {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background: #f0f0f0;
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+    <button id="mdp-readabler-trigger-button">Accessibility Options</button>
+    <div id="accessibility-options" style="display: none;">
+        <button id="increase-font-size">Increase Font Size</button>
+        <button id="decrease-font-size">Decrease Font Size</button>
+        <button id="toggle-contrast">Toggle High Contrast</button>
+        <button id="text-to-speech">Text to Speech</button>
+    </div>
+    <div id="content">
+        <p>Welcome to our website. This is a sample paragraph for demonstration purposes.</p>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var triggerButton = document.getElementById('mdp-readabler-trigger-button');
+            var options = document.getElementById('accessibility-options');
+            var increaseFontSizeButton = document.getElementById('increase-font-size');
+            var decreaseFontSizeButton = document.getElementById('decrease-font-size');
+            var toggleContrastButton = document.getElementById('toggle-contrast');
+            var textToSpeechButton = document.getElementById('text-to-speech');
+
+            triggerButton.addEventListener('click', function() {
+                console.log('Accessibility Options button clicked');
+                if (options.style.display === 'none' || options.style.display === '') {
+                    options.style.display = 'block';
+                } else {
+                    options.style.display = 'none';
+                }
+            });
+
+            increaseFontSizeButton.addEventListener('click', function() {
+                console.log('Increase Font Size button clicked');
+                var body = document.body;
+                var currentSize = window.getComputedStyle(body).fontSize;
+                body.style.fontSize = (parseFloat(currentSize) + 1) + 'px';
+            });
+
+            decreaseFontSizeButton.addEventListener('click', function() {
+                console.log('Decrease Font Size button clicked');
+                var body = document.body;
+                var currentSize = window.getComputedStyle(body).fontSize;
+                body.style.fontSize = (parseFloat(currentSize) - 1) + 'px';
+            });
+
+            toggleContrastButton.addEventListener('click', function() {
+                console.log('Toggle High Contrast button clicked');
+                document.body.classList.toggle('high-contrast');
+            });
+
+            textToSpeechButton.addEventListener('click', function() {
+                console.log('Text to Speech button clicked');
+                var msg = new SpeechSynthesisUtterance();
+                msg.text = document.getElementById('content').innerText;
+                window.speechSynthesis.speak(msg);
+            });
+        });
+    </script>
+</body>
+</html>

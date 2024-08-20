@@ -1,0 +1,17 @@
+body {
+    font-size: 16px;
+}
+
+.high-contrast {
+    background-color: black;
+    color: white;
+}
+
+#accessibility-options {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    background: #f0f0f0;
+    padding: 10px;
+    border: 1px solid #ccc;
+}

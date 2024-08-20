@@ -1,0 +1,27 @@
+<div class="form-wrapper">
+    <form [formGroup]="form_validation" (ngSubmit)="submited()" class="styled-form">
+      <div class="form-group">
+        <label for="city">City</label>
+        <input id="city" name="city" formControlName="city" class="form-control" />
+        <div *ngIf="form_validation.get('city')?.touched && form_validation.get('city')?.invalid" class="error-message">
+          <span *ngIf="form_validation.get('city')?.errors?.required" style="color: red;">City is required.</span>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="state">State</label>
+        <input id="state" name="state" formControlName="state" class="form-control" />
+        <div *ngIf="form_validation.get('state')?.touched && form_validation.get('state')?.invalid" class="error-message">
+          <span *ngIf="form_validation.get('state')?.errors?.required " style="color: red;">State is required.</span>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="country">Country</label>
+        <input id="country" name="country" formControlName="country" class="form-control" />
+        <div *ngIf="form_validation.get('country')?.touched && form_validation.get('country')?.invalid" class="error-message">
+          <span *ngIf="form_validation.get('country')?.errors?.required" style="color: red;">Country is required.</span>
+        </div>
+      </div>
+      <button type="submit" class="submit-button">Create Location</button>
+    </form>
+  </div>
+  

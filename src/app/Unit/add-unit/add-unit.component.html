@@ -1,0 +1,141 @@
+<p class="info-message">
+  Please ensure that all information provided in your submissions is truthful and accurate to maintain the integrity and validity of the process.
+</p>
+
+<br><br><br><br><br><br>
+<div class="form-container">
+  <form (ngSubmit)="CreateUnit()" class="styled-form">
+    <!-- Step 1: Unit Information -->
+    <div *ngIf="currentStep === 1" [formGroup]="unitValidaters" class="step-container">
+      <h3>Unit Information</h3>
+      <div class="form-group">
+        <label for="title">Unit Name</label>
+        <input formControlName="title" type="text" placeholder="Unit Name" class="form-control" />
+        <div *ngIf="unitValidaters.get('title')?.invalid && (unitValidaters.get('title')?.dirty || unitValidaters.get('title')?.touched)">
+          <p class="error-message">Please provide a valid title! (Minimum 5 characters)</p>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="subtitle">Subtitle</label>
+        <input formControlName="subtitle" type="text" placeholder="Subtitle" class="form-control" />
+        <div *ngIf="unitValidaters.get('subtitle')?.invalid && (unitValidaters.get('subtitle')?.dirty || unitValidaters.get('subtitle')?.touched)">
+          <p class="error-message">Please provide a valid subtitle! (Minimum 5 characters)</p>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="category">Category</label>
+        <input formControlName="category" type="text" placeholder="Category" class="form-control" />
+        <div *ngIf="unitValidaters.get('category')?.invalid && (unitValidaters.get('category')?.dirty || unitValidaters.get('category')?.touched)">
+          <p class="error-message">Please provide a valid category!</p>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="accomodationInformation">Accommodation Information</label>
+        <input formControlName="accomodationInformation" type="text" placeholder="Accommodation Information" class="form-control" />
+        <div *ngIf="unitValidaters.get('accomodationInformation')?.invalid && (unitValidaters.get('accomodationInformation')?.dirty || unitValidaters.get('accomodationInformation')?.touched)">
+          <p class="error-message">Please provide accommodation information!</p>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="numberOfBedrooms">Number of Bedrooms</label>
+        <input formControlName="numberOfBedrooms" type="number" placeholder="Number of Bedrooms" class="form-control" />
+        <div *ngIf="unitValidaters.get('numberOfBedrooms')?.invalid && (unitValidaters.get('numberOfBedrooms')?.dirty || unitValidaters.get('numberOfBedrooms')?.touched)">
+          <p class="error-message">Please provide the number of bedrooms!</p>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="numberOfBathrooms">Number of Bathrooms</label>
+        <input formControlName="numberOfBathrooms" type="number" placeholder="Number of Bathrooms" class="form-control" />
+        <div *ngIf="unitValidaters.get('numberOfBathrooms')?.invalid && (unitValidaters.get('numberOfBathrooms')?.dirty || unitValidaters.get('numberOfBathrooms')?.touched)">
+          <p class="error-message">Please provide the number of bathrooms!</p>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="priceInformation">Price Information</label>
+        <input formControlName="priceInformation" type="text" placeholder="Price Information" class="form-control" />
+        <div *ngIf="unitValidaters.get('priceInformation')?.invalid && (unitValidaters.get('priceInformation')?.dirty || unitValidaters.get('priceInformation')?.touched)">
+          <p class="error-message">Please provide price information!</p>
+        </div>
+      </div>
+
+      <div class="pagination-container">
+        <button type="button" class="pagination-button" [disabled]="true">Previous</button>
+        <button type="button" class="pagination-button" [disabled]="unitValidaters.invalid" (click)="nextStep()">Next</button>
+      </div>
+    </div>
+
+    <!-- Step 2: Location Information -->
+    <div *ngIf="currentStep === 2" [formGroup]="locationValidater" class="step-container">
+      <h3>Location Information</h3>
+      <div class="form-group">
+        <label for="city">City</label>
+        <input formControlName="city" type="text" placeholder="City" class="form-control" />
+        <div *ngIf="locationValidater.get('city')?.invalid && (locationValidater.get('city')?.dirty || locationValidater.get('city')?.touched)">
+          <p class="error-message">Please provide a valid city!</p>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="state">State</label>
+        <input formControlName="state" type="text" placeholder="State" class="form-control" />
+        <div *ngIf="locationValidater.get('state')?.invalid && (locationValidater.get('state')?.dirty || locationValidater.get('state')?.touched)">
+          <p class="error-message">Please provide a valid state!</p>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="country">Country</label>
+        <input formControlName="country" type="text" placeholder="Country" class="form-control" />
+        <div *ngIf="locationValidater.get('country')?.invalid && (locationValidater.get('country')?.dirty || locationValidater.get('country')?.touched)">
+          <p class="error-message">Please provide a valid country!</p>
+        </div>
+      </div>
+
+      <div class="pagination-container">
+        <button type="button" class="pagination-button" (click)="previousStep()">Previous</button>
+        <button type="button" class="pagination-button" [disabled]="locationValidater.invalid" (click)="nextStep()">Next</button>
+      </div>
+    </div>
+
+    <!-- Step 3: Amenities -->
+    <div *ngIf="currentStep === 3" [formGroup]="amenitiesValidatrt" class="step-container">
+      <h3>Amenities</h3>
+      <div class="form-group">
+        <label for="amenities">Amenities</label>
+        <input formControlName="amenities" type="text" placeholder="Amenities" class="form-control" />
+        <div *ngIf="amenitiesValidatrt.get('amenities')?.invalid && (amenitiesValidatrt.get('amenities')?.dirty || amenitiesValidatrt.get('amenities')?.touched)">
+          <p class="error-message">Please provide the amenities!</p>
+        </div>
+      </div>
+
+      <div class="pagination-container">
+        <button type="button" class="pagination-button" (click)="previousStep()">Previous</button>
+        <button type="button" class="pagination-button" [disabled]="amenitiesValidatrt.invalid" (click)="nextStep()">Next</button>
+      </div>
+    </div>
+
+    <!-- Step 4: Image Upload -->
+    <div *ngIf="currentStep === 4" [formGroup]="imageValidater" class="step-container">
+      <h3>Image Upload</h3>
+      <div class="form-group">
+        <label for="image">Unit Image</label>
+        <input formControlName="image" type="text" placeholder="Unit Image URL" class="form-control" />
+        <div *ngIf="imageValidater.get('image')?.invalid && (imageValidater.get('image')?.dirty || imageValidater.get('image')?.touched)">
+          <p class="error-message">Please provide a valid image URL!</p>
+        </div>
+      </div>
+
+      <div class="pagination-container">
+        <button type="button" class="pagination-button" (click)="previousStep()">Previous</button>
+        <button type="submit" class="pagination-button" [disabled]="imageValidater.invalid">Create Unit</button>
+      </div>
+    </div>
+
+  </form>
+</div>

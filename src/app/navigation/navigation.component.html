@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>City Homes</title>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Caveat&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+</head>
+<body>
+  <div class="container">
+    <h1>City Homes</h1>
+    <p>We settle You</p>
+  </div>
+
+  <div *ngIf="showLogoutBtn === true">
+    <div class="button-container">
+      <button class="logout-button" (click)="logOut($event)">
+        Log Out
+      </button>
+    </div>
+  </div>
+
+  <input type="checkbox" id="active">
+  <label for="active" class="menu-btn"><span></span></label>
+  <label for="active" class="close"></label>
+  <div class="wrapper">
+    <ul>
+      <li><a routerLink="/home">Home</a></li>
+      <li><a routerLink="/about">About</a></li>
+      <li><a routerLink="/services">Services</a></li>
+      <li><a routerLink="/gallery">Gallery</a></li>
+      <li><a routerLink="/feedback">Feedback</a></li>
+    </ul>
+  </div>
+</body>
+<br><br><br>
+<hr>
+<br>
+
+</html>

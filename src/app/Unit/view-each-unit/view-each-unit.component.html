@@ -1,0 +1,44 @@
+<div *ngIf="loading" class="loading-message">Loading...</div>
+<div *ngIf="!loading" class="unit-details-card">
+  <div class="unit-header">
+    <h2>{{ unitData.title }}</h2>
+    <p><b>Uploaded by:</b> {{ unitData.userThatUploaded }}</p>
+    <p><b>Category:</b> {{ unitData.category }}</p>
+    <p><b>Accommodation Info:</b> {{ unitData.accomodation_information }}</p>
+    <p><b>Bedrooms:</b> {{ unitData.number_of_bedrooms }}</p>
+    <p><b>Bathrooms:</b> {{ unitData.number_of_bathrooms }}</p>
+    <p><b>Price:</b> {{ unitData.price_information }}</p>
+    <p><b>Booked:</b> {{ unitData.is_booked ? 'Yes' : 'No' }}</p>
+    <p><b>Created At:</b> {{ formatDate(unitData.created_at) }}</p>
+    <p><b>Updated At:</b> {{ formatDate(unitData.updated_at) }}</p>
+  </div>
+
+  <div *ngIf="locationData" class="location-details">
+    <h2>Location Details</h2>
+    <p><b>City:</b> {{ locationData.city }}</p>
+    <p><b>State:</b> {{ locationData.state }}</p>
+    <p><b>Country:</b> {{ locationData.country }}</p>
+  </div>
+
+  <div *ngIf="userData" class="user-details">
+    <h2>Owner's Details</h2>
+    <p><b>Name:</b> {{ userData.name }}</p>
+    <p><b>Email:</b> {{ userData.email }}</p>
+    <p><b>Phone Number:</b> {{ userData.phone_number }}</p>
+    <p><b>Description:</b> {{ userData.description }}</p>
+    <p><b>General Overview:</b> {{ userData.general_property_overview }}</p>
+    <p><b>Member Since:</b> {{ userData.created_at | date:'MMMM d, y, h:mm a' }}</p>
+  </div>
+
+  <div *ngIf="imageData.length > 0" class="unit-images">
+    <h2>Images</h2>
+    <div *ngFor="let image of imageData">
+      <img [src]="image.image" alt="Unit Image" class="unit-image">
+    </div>
+  </div>
+
+  <div *ngIf="amenityData" class="amenities">
+    <h2>Amenities</h2>
+    <p>{{ amenityData.amenities }}</p>
+  </div>
+</div>

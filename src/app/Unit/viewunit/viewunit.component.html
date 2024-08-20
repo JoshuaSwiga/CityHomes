@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>City Homes</title>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Caveat&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="centered">
+    <div class="location-list-wrapper">
+      <div class="location-list">
+        <div *ngFor="let unit of data.units.units; let i = index" class="unit-card">
+          <div class="unit-details">
+            <div class="unit-info">
+              <div class="image-info" *ngIf="unit.images.length > 0">
+                
+                <div *ngFor="let image of unit.images">
+                  <img src="{{image.image}}" alt="Unit Image" class="unit-image">
+                </div>
+              </div>
+              <h2>Unit Details</h2>
+              <p><span>Title:</span> {{unit.title}}</p>
+              <p><span>Subtitle:</span> {{unit.subtitle}}</p>
+              <p><span>Category:</span> {{unit.category}}</p>
+              <p><span>Accommodation Info:</span> {{unit.accomodation_information}}</p>
+              <p><span>Bedrooms:</span> {{unit.number_of_bedrooms}}</p>
+              <p><span>Bathrooms:</span> {{unit.number_of_bathrooms}}</p>
+              <p><span>Price:</span> {{unit.price_information}}</p>
+              <p><span>Booked:</span> {{unit.is_booked ? 'Yes' : 'No'}}</p>
+            </div>
+            <div class="location-info" *ngIf="data.units.location[i]">
+              <h2>Location Details</h2>
+              <p><span>City:</span> {{data.units.location[i].city}}</p>
+              <p><span>Country:</span> {{data.units.location[i].country}}</p>
+              <p><span>State:</span> {{data.units.location[i].state}}</p>
+            </div>
+            <div class="user-info">
+              <h2>Owner's Details</h2>
+              <p><span>Name:</span> {{unit.user.name}}</p>
+              <p><span>Email:</span> {{unit.user.email}}</p>
+              <p><span>Phone Number:</span> {{unit.user.phone_number}}</p>
+            </div>
+            <div class="amenities-info" *ngIf="data.units.amenities[i]">
+              <h2>Amenities</h2>
+              <p><span>Amenities:</span> {{data.units.amenities[i].amenities}}</p>
+            </div>
+            
+          </div>
+          <div class="action">
+            <button routerLink="/book-unit/{{unit.id}}" class="book-now-button">
+              Book Now!
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const cards = document.querySelectorAll('.unit-card');
+      cards.forEach((card, index) => {
+        setTimeout(() => {
+          card.style.opacity = '1';
+          card.style.transform = 'translateY(0)';
+        }, index * 200); // Stagger the animation
+      });
+    });
+  </script>
+</body>
+</html>

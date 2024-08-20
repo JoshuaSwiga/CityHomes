@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>City Homes</title>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Landing Page Section -->
+  <section id="landing" class="landing">
+    <div class="landing-content">
+      <h1>Welcome to City Homes</h1>
+      <p>Your dream home awaits you.</p>
+      <button class="cta-button">Get Started</button>
+    </div>
+  </section>
+
+  <!-- Customer Reviews Section -->
+  <section id="reviews" class="reviews">
+    <h2>What Our Customers Say</h2>
+    <div class="review-carousel">
+      <div class="review-slide active">
+        <div class="review-card">
+          <p>"City Homes provided an excellent service. Highly recommend!"</p>
+          <span>- John Doe</span>
+        </div>
+      </div>
+      <div class="review-slide">
+        <div class="review-card">
+          <p>"The best home buying experience I've ever had."</p>
+          <span>- Jane Smith</span>
+        </div>
+      </div>
+      <div class="review-slide">
+        <div class="review-card">
+          <p>"Great customer support and seamless process."</p>
+          <span>- Michael Brown</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Us Section -->
+  <section id="contact" class="contact">
+    <h2>Contact Us</h2>
+    <form class="contact-form">
+      <label for="name">Name</label>
+      <input type="text" id="name" name="name" required>
+      
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" required>
+      
+      <label for="message">Message</label>
+      <textarea id="message" name="message" rows="4" required></textarea>
+      
+      <button type="submit">Send Message</button>
+    </form>
+    <div class="contact-details">
+      <p>Email: contactcityhomes.com</p>
+      <p>Phone: (123) 456-7890</p>
+      <p>Address: 123 Main St, Anytown, USA</p>
+    </div>
+  </section>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const slides = document.querySelectorAll('.review-slide');
+      let currentSlide = 0;
+      setInterval(() => {
+        slides[currentSlide].classList.remove('active');
+        currentSlide = (currentSlide + 1) % slides.length;
+        slides[currentSlide].classList.add('active');
+      }, 5000); // Change slide every 5 seconds
+    });
+  </script>
+</body>
+</html>

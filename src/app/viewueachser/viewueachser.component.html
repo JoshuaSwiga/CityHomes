@@ -1,0 +1,58 @@
+<div class="container">
+  <h1>User Details</h1>
+
+  <div *ngIf="userData">
+    <div class="form-container">
+      <form class="user-form" (ngSubmit)="edituser(userData.id)">
+        <div class="form-group">
+          <label for="name" class="form-label">Name</label>
+          <input type="text" id="name" class="form-control" [(ngModel)]="userData.name" name="name" required>
+        </div>
+
+        <div class="form-group">
+          <label for="email" class="form-label">Email</label>
+          <input type="email" id="email" class="form-control" [(ngModel)]="userData.email" name="email" required>
+        </div>
+
+        <div class="form-group">
+          <label for="phone_number" class="form-label">Phone Number</label>
+          <input type="text" id="phone_number" class="form-control" [(ngModel)]="userData.phone_number" name="phone_number" required>
+        </div>
+
+        <div class="form-group">
+          <label for="password" class="form-label">Password</label>
+          <input type="password" id="password" class="form-control" [(ngModel)]="userData.password" name="password" required>
+        </div>
+
+        <div class="form-group">
+          <label for="is_admin" class="form-label">Admin</label>
+          <select id="is_admin" class="form-control" [(ngModel)]="userData.is_admin" name="is_admin">
+            <option [ngValue]="true">Yes</option>
+            <option [ngValue]="false">No</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="profile_photo" class="form-label">Profile Photo</label>
+          <input type="text" id="profile_photo" class="form-control" [(ngModel)]="userData.profile_photo" name="profile_photo">
+        </div>
+
+        <div class="form-group">
+          <label for="description" class="form-label">Description</label>
+          <textarea id="description" class="form-control" [(ngModel)]="userData.description" name="description"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="general_property_overview" class="form-label">General Property Overview</label>
+          <textarea id="general_property_overview" class="form-control" [(ngModel)]="userData.general_property_overview" name="general_property_overview"></textarea>
+        </div>
+
+        <button type="submit" class="submit-button">Save Changes</button>
+      </form>
+    </div>
+  </div>
+
+  <div *ngIf="!userData">
+    <p>Loading user data...</p>
+  </div>
+</div>

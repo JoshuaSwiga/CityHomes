@@ -1,0 +1,149 @@
+/* Base styles */
+body {
+  font-family: 'Lato', sans-serif;
+  background-color: #f4f4f9;
+  margin: 0;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Container for location cards */
+.location-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  padding: 20px;
+}
+
+.location-list-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+/* Unit card styling */
+.unit-card {
+  background-color: #ffffff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: 100%;
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.unit-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Details inside the unit card */
+.unit-details {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: space-between;
+}
+
+.unit-info, .location-info, .user-info, .amenities-info, .image-info {
+  padding: 10px;
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.unit-info h2, .location-info h2, .user-info h2, .amenities-info h2, .image-info h2 {
+  font-family: 'Oswald', sans-serif;
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+
+.unit-info p, .location-info p, .user-info p, .amenities-info p {
+  margin: 5px 0;
+  font-size: 16px;
+  color: #333333;
+}
+
+span {
+  font-weight: bold;
+}
+
+/* Unit Image */
+.unit-image {
+  max-width: 100%;
+  border-radius: 10px;
+  margin: 20px 0;
+}
+
+/* Book Now button */
+.book-now-button {
+  background-color: #28a745;
+  color: #ffffff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  display: block;
+  margin: 20px auto;
+  font-size: 18px;
+}
+
+.book-now-button:hover {
+  background-color: #218838;
+  transform: scale(1.05);
+}
+
+/* Centering elements */
+.centered {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  flex-direction: column;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .unit-card {
+      max-width: 90%;
+      margin: 10px auto;
+      padding: 15px;
+  }
+
+  .unit-details {
+      flex-direction: column;
+      gap: 10px;
+  }
+
+  .book-now-button {
+      width: 100%;
+  }
+}
+
+/* Animation for cards */
+@keyframes fadeInUp {
+  from {
+      opacity: 0;
+      transform: translateY(20px);
+  }
+  to {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+.unit-card {
+  animation: fadeInUp 0.5s forwards;
+}
